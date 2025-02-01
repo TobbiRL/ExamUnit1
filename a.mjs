@@ -42,5 +42,21 @@ function multiply(...numbers) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
+const tests = test("Sum function");
+// Valid inputs
+tests.isEqual(multiply(2, 3, 4), 24, "2 and 3 and 4 multiplied should be 24");
+tests.isEqual(multiply(-5, 1), -5, "-5 and 1 multiplied should be -5");
+tests.isEqual(multiply(2.5, 4), 10, "2.5 and 4 multiplied should be 10");
+
+// Invalid inputs
+tests.isNotANumber(multiply("1", 2), '"1" and 2 multiplied should return NaN');
+tests.isNotANumber(multiply(1, null), "1 and null multiplied should be NaN");
+tests.isNotANumber(multiply(undefined, 3), "undefined and 3 multiplied should be NaN");
+tests.isNotANumber(multiply(NaN, 3), "NaN and 3 multiplied should be NaN");
+
+// Edge cases
+tests.isEqual(multiply(0, 0), 0, "Sum of 0 and 0 should be 0");
+tests.isEqual(multiply(Infinity, 1), Infinity, "Sum of Infinity and 1 should be Infinity");
+tests.isEqual(multiply(-Infinity, 1), -Infinity, "Sum of -Infinity and 1 should be -Infinity");
 
 //#endregion
