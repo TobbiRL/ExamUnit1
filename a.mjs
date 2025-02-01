@@ -31,6 +31,4 @@ import test from "./test.mjs";
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
 
-/* git test */
-
 //#endregion
