@@ -22,12 +22,15 @@ import test from "./test.mjs";
 function multiply(...numbers) {
     let total = 1;
     for (const num of numbers) {
-        if (isNaN(num) || typeof num !== "number") {
+        let parsedNum = num;
+        if (typeof num == "string") {
+            parsedNum = Number(num);
+        } 
+        else if (isNaN(parsedNum) || typeof parsedNum !== "number") {
             return NaN
-        } else if (typeof num == "number") {
-            parseInt(num)
         }
-      total *= num;
+
+        total *= parsedNum;
     }
     return total;
   }
