@@ -20,8 +20,8 @@ import test from "./test.mjs";
 //#region function -----------------------------------------------------------------
 // Write your function her.
 
-function formatName(...name) {
-    if (typeof name !== "String") {
+function formatName(name) {
+    if (typeof name !== "string") {
         return null
     }
         
@@ -36,9 +36,11 @@ function formatName(...name) {
         
     for (let i = 0; i < names.length; i++) {
         if (names[i].length > 0) {
-            formattedName = words[i].charAt(0).toUpperCase()
+            formattedName += names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase() + " ";
         }
+       
     }
+    return formattedName.trim();
 }
     
 
@@ -56,5 +58,6 @@ tests.isEqual(formatName(1), null, "Returns Null if not a string");
 tests.isEqual(formatName(" Carl "), "Carl", "Removes leading or trailing whitespace");
 tests.isEqual(formatName("john doe"), "John Doe", "Capitalizes first letter of name");
 tests.isEqual(formatName(""), "", "Returns empty if string is empty after trimming");
+tests.isEqual(formatName("#John@Doe"), null, "Returns null if special char in string");
 
 //#endregion
