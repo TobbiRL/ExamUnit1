@@ -13,9 +13,9 @@ import test from "./test.mjs";
 function sequence(n) {
     let base = [0, 1];
     
-    if (n > base.length) {
+    if (n >= base.length) {
         let m = base.length;
-        while (m < n) {
+        while (m <= n) {
         let fib = base[m - 1] + base[m - 2];
         base[m] = fib;
         m++;
