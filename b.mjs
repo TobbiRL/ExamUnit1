@@ -63,7 +63,6 @@ function formatName(name) {
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
 const tests = test(MESSAGE.nameFormatter);
-
 //Basic cases
 tests.isEqual(formatName(" Carl "), "Carl", MESSAGE.removesWhitespace);
 tests.isEqual(formatName("john doe"), "John Doe", MESSAGE.capitalizeLetter);

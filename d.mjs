@@ -44,6 +44,7 @@ function guessNumber(target, guess) {
 
 //#region Tests --------------------------------------------------------------------
 const tests = test(MESSAGE.guesses);
+
 // Basic cases
 tests.isEqual(guessNumber(10, 5), MESSAGE.tooLow, MESSAGE.guessTooLow);
 tests.isEqual(guessNumber(10, 15), MESSAGE.tooHigh, MESSAGE.guessTooHigh);
