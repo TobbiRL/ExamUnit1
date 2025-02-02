@@ -66,7 +66,7 @@ const tests = test(MESSAGE.nameFormatter);
 //Basic cases
 tests.isEqual(formatName(" Carl "), "Carl", MESSAGE.removesWhitespace);
 tests.isEqual(formatName("john doe"), "John Doe", MESSAGE.capitalizeLetter);
-tests.isEqual(formatName(""), "", MESSAGE.returnEmpty);
+tests.isEqual(formatName(" "), "", MESSAGE.returnEmpty);
 
 // Invalid cases
 tests.isEqual(formatName(1), null, MESSAGE.returnNull);
