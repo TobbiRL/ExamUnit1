@@ -1,4 +1,5 @@
 import test from "./test.mjs";
+import { MESSAGE } from "./magicStringRemover.mjs";
 
 /*
     Challenge: Implement the `guessNumber` function.
@@ -28,13 +29,13 @@ function guessNumber(target, guess) {
         return null
     }
     if (target > guess) {
-        return "Too low";
+        return MESSAGE.tooLow;
     }
     else if (target < guess) {
-        return "Too high";
+        return MESSAGE.tooHigh;
     }
     else if (target == guess) {
-        return "Correct!"
+        return MESSAGE.correct;
     }
 }
 
@@ -42,17 +43,17 @@ function guessNumber(target, guess) {
 //#endregion
 
 //#region Tests --------------------------------------------------------------------
-const tests = test("Guesses");
+const tests = test(MESSAGE.guesses);
 // Basic cases
-tests.isEqual(guessNumber(10, 5), "Too low", "If target is 10 and guess is 5, return 'Too low'");
-tests.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15, return 'Too high'");
-tests.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
+tests.isEqual(guessNumber(10, 5), MESSAGE.tooLow, MESSAGE.guessTooLow);
+tests.isEqual(guessNumber(10, 15), MESSAGE.tooHigh, MESSAGE.guessTooHigh);
+tests.isEqual(guessNumber(10, 10), MESSAGE.correct, MESSAGE.guessCorrect);
 
 // Invalid inputs
-tests.isEqual(guessNumber(10, 5.5), null, "Guess was not and integer");
-tests.isEqual(guessNumber(10.1, 5), null, "Target was not and integer");
+tests.isEqual(guessNumber(10, 5.5), null, MESSAGE.guessNotInteger);
+tests.isEqual(guessNumber(10.1, 5), null, MESSAGE.targetNotInteger);
 
 // Edge cases
-tests.isEqual(guessNumber(10, "5"), null, "Guess was not a number");
-tests.isEqual(guessNumber("10", 5), null, "Target was not a number");
+tests.isEqual(guessNumber(10, "5"), null, MESSAGE.guessNotNumber);
+tests.isEqual(guessNumber("10", 5), null, MESSAGE.targetNotNumber);
 //#endregion
