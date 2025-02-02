@@ -21,18 +21,25 @@ import test from "./test.mjs";
 // Write your function her.
 
 function formatName(...name) {
-        if (typeof name !== "String") {
-            return null
-        }
+    if (typeof name !== "String") {
+        return null
+    }
         
-        const trimName = name.trim();
+    const trimName = name.trim();
             
-        if (trimName == "") {
-            return "";
-        }   
+    if (trimName == "") {
+         return "";
+    }   
 
-        const formattedName = trimName.charAt(0).toUpperCase()
+    const names = trimName.split(" ")
+    let formattedName = "";
+        
+    for (let i = 0; i < names.length; i++) {
+        if (names[i].length > 0) {
+            formattedName = words[i].charAt(0).toUpperCase()
         }
+    }
+}
     
 
 
@@ -44,7 +51,7 @@ function formatName(...name) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-
+const tests = test("Name formatter");
 tests.isEqual(formatName(1), null, "Returns Null if not a string");
 tests.isEqual(formatName(" Carl "), "Carl", "Removes leading or trailing whitespace");
 tests.isEqual(formatName("john doe"), "John Doe", "Capitalizes first letter of name");
