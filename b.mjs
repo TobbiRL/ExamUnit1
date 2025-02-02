@@ -1,5 +1,5 @@
 import test from "./test.mjs";
-
+import { MESSAGE, CHAR } from "./magicStringRemover.mjs";
 /*
     Challenge: Implement the `formatName` function.
 
@@ -28,21 +28,21 @@ function formatName(name) {
         
     const trimName = name.trim();
 
-    if (trimName == "") {
-         return "";
+    if (trimName == CHAR.empty) {
+         return CHAR.empty;
     }   
     
-    const names = trimName.split(" ")
-    let formattedName = "";
+    const names = trimName.split(CHAR.space)
+    let formattedName = CHAR.empty;
         
     for (let i = 0; i < names.length; i++) {
         if (names[i].length > 0) {
-            formattedName += names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase() + " ";
+            formattedName += names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase() + CHAR.space;
         }
        
     }
 
-    const specialChar = "@£$%&#()/[]-+¤!{}";
+    const specialChar = CHAR.specialChar;
 
     for (let char of specialChar) {
         if(name.includes(char)) {
@@ -62,15 +62,15 @@ function formatName(name) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-const tests = test("Name formatter");
+const tests = test(MESSAGE.nameFormatter);
 
 //Basic cases
-tests.isEqual(formatName(" Carl "), "Carl", "Removes leading or trailing whitespace");
-tests.isEqual(formatName("john doe"), "John Doe", "Capitalizes first letter of name");
-tests.isEqual(formatName(""), "", "Returns empty if string is empty after trimming");
+tests.isEqual(formatName(" Carl "), "Carl", MESSAGE.removesWhitespace);
+tests.isEqual(formatName("john doe"), "John Doe", MESSAGE.capitalizeLetter);
+tests.isEqual(formatName(""), "", MESSAGE.returnEmpty);
 
 // Invalid cases
-tests.isEqual(formatName(1), null, "Returns Null if not a string");
-tests.isEqual(formatName("#John@Doe"), null, "Returns null if special char in string");
+tests.isEqual(formatName(1), null, MESSAGE.returnNull);
+tests.isEqual(formatName("#John@Doe"), null, MESSAGE.nullIfSpecialChar);
 
 //#endregion

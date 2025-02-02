@@ -1,5 +1,5 @@
 import test from "./test.mjs";
-
+import { MESSAGE } from "./magicStringRemover.mjs";
 /*
     Challenge: Implement the `multiply` function.
 
@@ -43,21 +43,21 @@ function multiply(...numbers) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-const tests = test("Multiplication function");
+const tests = test(MESSAGE.multiplicationFunction);
 // Valid inputs
-tests.isEqual(multiply(2, 3, 4), 24, "Multiplying 2, 3 and 4 should return 24");
-tests.isEqual(multiply(-5, 1), -5, "Multiplying -5 and 1 should return -5");
-tests.isEqual(multiply(2.5, 4), 10, "Multiplying 2.5 and 4 multiplied should return 10");
-tests.isEqual(multiply("1", 2, 3), 6, "Multiplying '1', 2 and 3 should return 6");
+tests.isEqual(multiply(2, 3, 4), 24, MESSAGE.multiplicationTestInteger);
+tests.isEqual(multiply(-5, 1), -5, MESSAGE.multiplicationTestNegative);
+tests.isEqual(multiply(2.5, 4), 10, MESSAGE.multiplicationTestDecimal);
+tests.isEqual(multiply("1", 2, 3), 6, MESSAGE.multiplicationTestStringNumber);
 
 // Invalid inputs
-tests.isNotANumber(multiply(1, null), "Multiplying 1 and null should be NaN");
-tests.isNotANumber(multiply(undefined, 3), "Multiplying undefined and 3 should be NaN");
-tests.isNotANumber(multiply(NaN, 3), "Multiplying NaN and 3 should be NaN");
+tests.isNotANumber(multiply(1, null), MESSAGE.multiplicationTestNull);
+tests.isNotANumber(multiply(undefined, 3), MESSAGE.multiplicationTestUndefined);
+tests.isNotANumber(multiply(NaN, 3), MESSAGE.multiplicationTestNaN);
 
 // Edge cases
-tests.isEqual(multiply(0, 0), 0, "Multiplying  0 and 0 should return 0");
-tests.isEqual(multiply(Infinity, 1), Infinity, "Multiplying Infinity and 1 should return Infinity");
-tests.isEqual(multiply(-Infinity, 1), -Infinity, "Multiplying -Infinity and 1 should return -Infinity");
+tests.isEqual(multiply(0, 0), 0, MESSAGE.multiplication0);
+tests.isEqual(multiply(Infinity, 1), Infinity, MESSAGE.multiplicationInfinity);
+tests.isEqual(multiply(-Infinity, 1), -Infinity, MESSAGE.multiplicationNegativeInfinity);
 
 //#endregion

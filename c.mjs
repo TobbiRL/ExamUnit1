@@ -1,3 +1,4 @@
+import { MESSAGE } from "./magicStringRemover.mjs";
 import test from "./test.mjs";
 
 /*
@@ -31,25 +32,25 @@ function sequence(n) {
 
 
 //#region Tests --------------------------------------------------------------------
-const tests = test("Sum function");
+const tests = test(MESSAGE.sumFunction);
 
 // Basic cases
-tests.isEqual(sequence(0), 0, "For n = 0, the function should return 0");
-tests.isEqual(sequence(1), 1, "For n = 1, the function should return 1");
-tests.isEqual(sequence(2), 1, "For n = 2, the function should return 1");
-tests.isEqual(sequence(3), 2, "For n = 3, the function should return 2");
-tests.isEqual(sequence(4), 3, "For n = 4, the function should return 3");
-tests.isEqual(sequence(5), 5, "For n = 5, the function should return 5");
-tests.isEqual(sequence(6), 8, "For n = 6, the function should return 8");
-tests.isEqual(sequence(10), 55, "For n = 10, the function should return 55");
+tests.isEqual(sequence(0), 0, MESSAGE.nEquals0);
+tests.isEqual(sequence(1), 1, MESSAGE.nEquals1);
+tests.isEqual(sequence(2), 1, MESSAGE.nEquals2);
+tests.isEqual(sequence(3), 2, MESSAGE.nEquals3);
+tests.isEqual(sequence(4), 3, MESSAGE.nEquals4);
+tests.isEqual(sequence(5), 5, MESSAGE.nEquals5);
+tests.isEqual(sequence(6), 8, MESSAGE.nEquals6);
+tests.isEqual(sequence(10), 55, MESSAGE.nEquals10);
 
 // Large input
-tests.isEqual(sequence(20), 6765, "For n = 20, the function should return 6765");
+tests.isEqual(sequence(20), 6765, MESSAGE.nEquals20);
 
 // Edge cases
-tests.isEqual(sequence(-1), null, "Negative input should return null");
-tests.isEqual(sequence(1.5), null, "Non-integer input should return null");
-tests.isEqual(sequence("5"), null, "String input should return null");
-tests.isEqual(sequence(null), null, "Null input should return null");
+tests.isEqual(sequence(-1), null, MESSAGE.negativeInput);
+tests.isEqual(sequence(1.5), null, MESSAGE.nonInteger);
+tests.isEqual(sequence("5"), null, MESSAGE.stringInput);
+tests.isEqual(sequence(null), null, MESSAGE.nullInput);
 
 //#endregion
