@@ -20,6 +20,18 @@ import test from "./test.mjs";
 //#region function -----------------------------------------------------------------
 // Write your function her.
 
+function formatName(...name) {
+        if (typeof name !== "String") {
+            return null
+        }
+        
+        const trimName = name.trim();
+            
+        if (trimName == "") {
+            return "";
+        }   
+        }
+    
 
 
 //#endregion
@@ -31,6 +43,9 @@ import test from "./test.mjs";
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
 
-
+tests.isEqual(formatName(1), null, "Returns Null if not a string");
+tests.isEqual(formatName(" Carl "), "Carl", "Removes leading or trailing whitespace");
+tests.isEqual(formatName("john doe"), "John Doe", "Capitalizes first letter of name");
+tests.isEqual(formatName(""), "", "Returns empty if string is empty after trimming");
 
 //#endregion
