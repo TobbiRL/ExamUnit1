@@ -22,7 +22,7 @@ function sequence(n) {
         }
     }
       
-    return base[n - 1];
+    return base[n];
 }
 
 
