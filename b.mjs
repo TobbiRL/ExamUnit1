@@ -30,6 +30,8 @@ function formatName(...name) {
         if (trimName == "") {
             return "";
         }   
+
+        const formattedName = trimName.charAt(0).toUpperCase()
         }
     
 
