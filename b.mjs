@@ -63,10 +63,14 @@ function formatName(name) {
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
 const tests = test("Name formatter");
-tests.isEqual(formatName(1), null, "Returns Null if not a string");
+
+//Basic cases
 tests.isEqual(formatName(" Carl "), "Carl", "Removes leading or trailing whitespace");
 tests.isEqual(formatName("john doe"), "John Doe", "Capitalizes first letter of name");
 tests.isEqual(formatName(""), "", "Returns empty if string is empty after trimming");
+
+// Invalid cases
+tests.isEqual(formatName(1), null, "Returns Null if not a string");
 tests.isEqual(formatName("#John@Doe"), null, "Returns null if special char in string");
 
 //#endregion

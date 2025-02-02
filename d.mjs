@@ -24,23 +24,32 @@ import test from "./test.mjs";
 // Write your function her.
 
 function guessNumber(target, guess) {
-
+    if (target > guess) {
+        return "Too low";
+    }
+    else if (target < guess) {
+        return "Too high";
+    }
+    else if (target == guess) {
+        return "Correct!"
+    }
 }
 
 
 //#endregion
 
 //#region Tests --------------------------------------------------------------------
-
+const tests = test("Guesses");
 // Basic cases
-test.isEqual(guessNumber(10, 5), "Too low", "If target is 10 and guess is 5, return 'Too low'");
-test.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15, return 'Too high'");
-test.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
+tests.isEqual(guessNumber(10, 5), "Too low", "If target is 10 and guess is 5, return 'Too low'");
+tests.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15, return 'Too high'");
+tests.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
 
 // Invalid inputs
-
+tests.isEqual(guessNumber(10, 5.5), null, "Guess was not and integer");
+tests.isEqual(guessNumber(10.1, 5), null, "Target was not and integer");
 
 // Edge cases
-
-
+tests.isEqual(guessNumber(10, "5"), null, "Guess was not a number");
+tests.isEqual(guessNumber("10", 5), null, "Target was not a number");
 //#endregion
