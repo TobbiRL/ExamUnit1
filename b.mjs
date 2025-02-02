@@ -21,16 +21,17 @@ import test from "./test.mjs";
 // Write your function her.
 
 function formatName(name) {
+    
     if (typeof name !== "string") {
         return null
     }
         
     const trimName = name.trim();
-            
+
     if (trimName == "") {
          return "";
     }   
-
+    
     const names = trimName.split(" ")
     let formattedName = "";
         
@@ -39,6 +40,14 @@ function formatName(name) {
             formattedName += names[i].charAt(0).toUpperCase() + names[i].slice(1).toLowerCase() + " ";
         }
        
+    }
+
+    const specialChar = "@£$%&#()/[]-+¤!{}";
+
+    for (let char of specialChar) {
+        if(name.includes(char)) {
+            return null
+        }
     }
     return formattedName.trim();
 }
