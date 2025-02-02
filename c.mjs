@@ -11,10 +11,10 @@ import test from "./test.mjs";
 */
 
 function sequence(n) {
-    if (typeof n !== "number") {
+    if (typeof n !== "number" || n < 0) {
         return null;
     }
-    
+
     let base = [0, 1];
     
     if (n >= base.length) {
